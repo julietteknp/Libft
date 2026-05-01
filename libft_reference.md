@@ -110,7 +110,7 @@ Copie au maximum `size - 1` caractères de `src` dans `dst`, avec `'\0'` final g
 |---|
 | `size == 0` → ne copie rien, retourne `strlen(src)` |
 | `src` plus long que `size` → tronque et ajoute `'\0'` |
-| `dst` doit avoir au moins `size` octets |
+| `dst` doit avoir au moins `size` octets mais responsabilite de la'appelant! pas verifie dans fonction |
 
 ---
 
