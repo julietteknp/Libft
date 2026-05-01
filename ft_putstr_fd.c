@@ -1,49 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 14:49:03 by jkonop            #+#    #+#             */
-/*   Updated: 2026/04/24 10:43:37 by jkonop           ###   ########.fr       */
+/*   Created: 2026/04/28 12:06:55 by jkonop            #+#    #+#             */
+/*   Updated: 2026/04/28 12:13:44 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+#include <unistd.h>
 
-size_t	ft_strlen(const char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	len;
-
-	len = 0;
-	if (!str)
-		return (0);
-	while (*str++)
+	while (*s)
 	{
-		len++;
+		write (fd, s, 1);
+		s++;
 	}
-	return (len);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	char		*d;
-	const char	*s;
-
-	d = dst;
-	s = src;
-	if (size > 0)
-	{
-		while (*s && (size > 1))
-		{
-			*d = *s;
-			d++;
-			s++;
-			size--;
-		}
-		*d = '\0';
-	}
-	return (ft_strlen(src));
 }
 
 /*int     ft_fake_atoi(char *str)
@@ -59,14 +33,10 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 int     main(int argc, char **argv)
 {
-        if(argc != 4)
+        if (argc != 3)
                 return (0);
-        ft_strlcpy(argv[1], argv[2], ft_fake_atoi(argv[3]));
-        char *p = argv[1];
-        while(*p)
-        {
-                printf("%c", *p);
-                p++;
-        }
+        char *string = argv[1];
+        int fd = ft_fake_atoi(argv[2]);
+        ft_putstr_fd(string, fd);
         return (0);
 }*/

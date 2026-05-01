@@ -6,20 +6,20 @@
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 16:25:40 by jkonop            #+#    #+#             */
-/*   Updated: 2026/04/23 13:54:33 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/04/30 18:01:10 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
 void	*ft_memchr(const void *memoryBlock, int searchedChar, size_t size)
 {
-	unsigned char	*p;
+	const unsigned char	*p;
 
 	p = (unsigned char *) memoryBlock;
 	while (size > 0)
 	{
 		if (*p == (unsigned char) searchedChar)
-			return (p);
+			return ((unsigned char *)p);
 		p++;
 		size--;
 	}

@@ -1,72 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 14:49:03 by jkonop            #+#    #+#             */
-/*   Updated: 2026/04/24 10:43:37 by jkonop           ###   ########.fr       */
+/*   Created: 2026/04/28 12:50:25 by jkonop            #+#    #+#             */
+/*   Updated: 2026/04/28 13:08:41 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-size_t	ft_strlen(const char *str)
+#include <unistd.h>
+
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	len;
+	char	c;
 
-	len = 0;
-	if (!str)
-		return (0);
-	while (*str++)
+	if (n == -2147483648)
 	{
-		len++;
+		write (fd, "-2147483648", 11);
+		return ;
 	}
-	return (len);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	char		*d;
-	const char	*s;
-
-	d = dst;
-	s = src;
-	if (size > 0)
+	if (n < 0)
 	{
-		while (*s && (size > 1))
-		{
-			*d = *s;
-			d++;
-			s++;
-			size--;
-		}
-		*d = '\0';
+		write (fd, "-", 1);
+		n = -n;
 	}
-	return (ft_strlen(src));
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	c = n % 10 + '0';
+	write (fd, &c, 1);
 }
 
 /*int     ft_fake_atoi(char *str)
 {
         int result = 0;
+	int sign = 1;
+	if (*str == '-')
+	{
+		sign = -1;
+		str++;
+	}
         while(*str)
         {
                 result = result * 10 + *str - '0';
                 str++;
         }
-        return (result);
+        return (result * sign);
 }
 
 int     main(int argc, char **argv)
 {
-        if(argc != 4)
+        if (argc != 3)
                 return (0);
-        ft_strlcpy(argv[1], argv[2], ft_fake_atoi(argv[3]));
-        char *p = argv[1];
-        while(*p)
-        {
-                printf("%c", *p);
-                p++;
-        }
+        int n = ft_fake_atoi(argv[1]);
+        int fd = ft_fake_atoi(argv[2]);
+        ft_putnbr_fd(n, fd);
         return (0);
 }*/

@@ -6,15 +6,15 @@
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 11:59:20 by jkonop            #+#    #+#             */
-/*   Updated: 2026/04/23 13:57:20 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/04/23 14:44:36 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
 void	*ft_memcpy(void *destination, const void *source, size_t size)
 {
-	unsigned char	*dest;
-	unsigned char	*src;
+	unsigned char		*dest;
+	const unsigned char	*src;
 
 	dest = (unsigned char *) destination;
 	src = (unsigned char *) source;

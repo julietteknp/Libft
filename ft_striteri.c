@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 15:47:09 by jkonop            #+#    #+#             */
-/*   Updated: 2026/04/30 18:20:02 by jkonop           ###   ########.fr       */
+/*   Created: 2026/04/28 11:38:36 by jkonop            #+#    #+#             */
+/*   Updated: 2026/04/28 11:50:30 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdio.h>
 
-int	ft_isprint(int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	if (c >= 32 && c <= 127)
-		return (1);
-	else
-		return (0);
+	unsigned int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }
 
-/*int     main(int argc, char **argv)
+/*void	ft_upper_even(unsigned int i, char *c)
 {
+        if (i % 2 == 0 && *c >= 'a' && *c <= 'z')
+                *c = *c - 32;    
+}
+
+int	main(int argc, char **argv)
+{       
         if (argc != 2)
                 return (0);
-        char *str;
-        str = argv[1];
-        while (*str)
-        {
-                printf("%d", ft_isascii(*str));
-                printf("%c", '\n');
-                str++;
-        }
+        char *string = argv[1];
+        ft_striteri(string, ft_upper_even);
+        printf("%s\n", string);
         return (0);
 }*/

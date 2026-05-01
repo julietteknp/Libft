@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/27 11:21:44 by jkonop            #+#    #+#             */
+/*   Updated: 2026/04/27 11:23:36 by jkonop           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*string;
 	char	*substring;
-	int	i;
+	int		i;
 
 	string = (char *)s;
-	i = 0;	
+	i = 0;
 	substring = malloc(sizeof(char) * (len + 1));
-	if(substring == NULL)
+	if (substring == NULL)
 		return (NULL);
-	while(len > 0)
+	while (len > 0)
 	{
 		substring[i] = string[start];
 		printf("%c", substring[i]);
@@ -24,7 +36,7 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	return (substring);
 }
 
-int	ft_fake_atoi(char *str)
+/*int	ft_fake_atoi(char *str)
 {
 	int result = 0;
 	while(*str)
@@ -49,4 +61,4 @@ int	main(int argc, char **argv)
 		substring++;
 	}
 	return (0);
-}
+}*/

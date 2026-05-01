@@ -6,7 +6,7 @@
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 16:28:59 by jkonop            #+#    #+#             */
-/*   Updated: 2026/04/24 16:49:20 by jkonop           ###   ########.fr       */
+/*   Updated: 2026/04/24 17:00:39 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -25,15 +25,15 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	if (p == NULL)
 		return (NULL);
 	while (total > 0)
-        {
-                *p = 0;
-                p++;
-                total--;
-        }
-        return (p - total);
+	{
+		*p = 0;
+		p++;
+		total--;
+	}
+	return (p - (nmemb * size));
 }
 
-int   ft_fake_atoi(char *str)
+/*int   ft_fake_atoi(char *str)
 {
         int result = 0;
         while(*str)
@@ -55,4 +55,4 @@ int     main(int argc, char **argv)
                 p++;
         }
         return (0);
-}
+}*/

@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkonop <jkonop@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 15:47:09 by jkonop            #+#    #+#             */
-/*   Updated: 2026/04/30 18:20:02 by jkonop           ###   ########.fr       */
+/*   Created: 2026/04/28 11:51:10 by jkonop            #+#    #+#             */
+/*   Updated: 2026/04/28 12:05:49 by jkonop           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-#include <stdio.h>
-
-int	ft_isprint(int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	if (c >= 32 && c <= 127)
-		return (1);
-	else
-		return (0);
+	write (fd, &c, 1);
 }
 
-/*int     main(int argc, char **argv)
+/*int     ft_fake_atoi(char *str)
 {
-        if (argc != 2)
-                return (0);
-        char *str;
-        str = argv[1];
-        while (*str)
+        int result = 0;
+        while(*str)
         {
-                printf("%d", ft_isascii(*str));
-                printf("%c", '\n');
+                result = result * 10 + *str - '0';
                 str++;
         }
-        return (0);
+        return (result);
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc != 3)
+		return (0);
+	char *string = argv[1];
+	int fd = ft_fake_atoi(argv[2]);
+	while (*string)
+	{
+		ft_putchar_fd(*string, fd);
+		string++;
+	}
+	return (0);
 }*/
